@@ -51,7 +51,7 @@
 <script>
 const contenedor = document.getElementById("contenedor");
 
-fetch("assets/categorias-ttv.json")
+fetch("categorias-ttv.json")
   .then(res => res.json())
   .then(data => {
     for (const titulo in data) {
