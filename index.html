@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Galería de Juegos</title>
-  <link rel="icon" href="https://mc-heads.net/avatar/diegokugamer541" type="image/png"/>
+      <link rel="icon" href="https://mc-heads.net/avatar/diegokugamer541" type="image/png"/>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -52,7 +52,7 @@
 <script>
 const contenedor = document.getElementById("contenedor");
 
-fetch("categorias-ttv.json"  + Date.now())
+fetch("categorias-ttv.json")
   .then(res => res.json())
   .then(data => {
     for (const titulo in data) {
