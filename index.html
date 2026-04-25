@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Galería de Juegos</title>
-      <link rel="icon" href="https://mc-heads.net/avatar/diegokugamer541" type="image/png"/>
+  <link rel="icon" href="https://mc-heads.net/avatar/diegokugamer541" type="image/png"/>
   <style>
     ::-webkit-scrollbar {
       display: none;
@@ -45,7 +46,9 @@
     .title {
       padding: 10px;
       font-size: 14px;
-      color:#00fbff
+      color:#00fbff;
+      display: block;
+      text-decoration: none;
     }
     select {
       width: 100%;
@@ -184,21 +187,29 @@ fetch("categorias-ttv.json")
   .then(res => res.json())
   .then(data => {
     for (const titulo in data) {
-      const card = document.createElement("div");
-      card.className = "card";
+  const info = data[titulo];
 
-      const img = document.createElement("img");
-      img.src = data[titulo];
-      img.alt = titulo;
-      img.loading = "lazy";
+  const card = document.createElement("div");
+  card.className = "card";
 
-      const text = document.createElement("div");
-      text.className = "title";
-      text.textContent = titulo;
-      card.appendChild(img);
-      card.appendChild(text);
-      contenedor.appendChild(card);
-    }
+  const img = document.createElement("img");
+  img.src = info.img;
+  img.alt = titulo;
+  img.loading = "lazy";
+
+  img.style.cursor = "pointer";
+  img.onclick = () => {
+    window.open(info.url, "_blank");
+  };
+
+  const text = document.createElement("div");
+  text.className = "title";
+  text.textContent = titulo;
+
+  card.appendChild(img);
+  card.appendChild(text);
+  contenedor.appendChild(card);
+}
   })
   .catch(err => console.error("Error:", err));
 
